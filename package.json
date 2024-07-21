@@ -1,0 +1,37 @@
+{
+  "name": "bajo-markdown",
+  "version": "1.0.0",
+  "description": "Markdown support for Bajo Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardhi/bajo-markdown.git"
+  },
+  "keywords": [
+    "markdown",
+    "bajo",
+    "framework",
+    "fastify",
+    "modular"
+  ],
+  "author": "Ardhi Lukianto <ardhi@lukianto.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ardhi/bajo-markdown/issues"
+  },
+  "homepage": "https://github.com/ardhi/bajo-markdown#readme",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^9.1.6",
+    "marked-custom-heading-id": "^2.0.8",
+    "marked-extended-tables": "^1.0.8",
+    "marked-highlight": "^2.1.3",
+    "marked-katex-extension": "^5.0.2",
+    "marked-mangle": "^1.1.8",
+    "node-emoji": "^2.1.3"
+  }
+}
