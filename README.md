@@ -18,6 +18,10 @@ $ npm install bajo-markdown
 
 Now open your ```<bajo-data-dir>/config/.plugins``` and put ```bajo-markdown``` in it
 
+## Class Method
+
+- ```function parse(text)```
+
 ## License
 
 [MIT](LICENSE)
