@@ -14,8 +14,8 @@ async function start () {
     mangle(),
     katex({ throwOnError: false })
   ]
-  if (this.app.bajoWebMpaLibs) {
-    const hljs = await importPkg('bajoWebMpaLibs:highlight.js')
+  if (this.app.waibuExtra) {
+    const hljs = await importPkg('waibuExtra:highlight.js')
     const highlight = markedHighlight({
       langPrefix: 'hljs language-',
       highlight (code, lang) {
