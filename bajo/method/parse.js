@@ -1,5 +1,5 @@
-function parse (content) {
-  return this.instance.parse(content)
+function parse (content, opts) {
+  return this.instance.parse(content, opts)
 }
 
 export default parse
