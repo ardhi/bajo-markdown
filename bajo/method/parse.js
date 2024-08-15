@@ -2,8 +2,9 @@ const to = '---\n'
 const tc = '\n---\n'
 
 function parse (content, opts = {}) {
-  const { unescape } = this.app.bajo
   const { isPlainObject, isArray } = this.app.bajo.lib._
+  const { fs } = this.app.bajo.lib
+  if (opts.readFile) content = fs.readFileSync(content, 'utf8')
   let meta
   let text = content.replaceAll('\r\n', '\n')
   const open = text.indexOf(to)
@@ -16,23 +17,24 @@ function parse (content, opts = {}) {
     }
   }
   if (meta) {
-    meta = meta.replaceAll('&quot;', '"')
     const handlers = []
     if (this.app.bajoConfig) handlers.push(this.app.bajoConfig.fromYaml, this.app.bajoConfig.fromToml)
     handlers.push(JSON.parse)
-    let success = false
+    let success
     for (const h of handlers) {
       if (success) break
       try {
-        meta = h(meta, true)
-        if (isPlainObject(meta) || isArray(meta)) success = true
-        else meta = undefined
+        const result = h(meta, true)
+        if (isPlainObject(result) || isArray(result)) success = result
       } catch (err) {}
     }
+    meta = success ?? {}
   }
-  content = unescape(this.instance.parse(content, opts))
+
+  const html = opts.parseContent ? this.parseContent(content, opts) : undefined
   return {
-    meta,
+    meta: meta ?? {},
+    html,
     content
   }
 }

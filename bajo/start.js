@@ -28,10 +28,10 @@ async function start () {
   const marked = new Marked(options)
   marked.use({ renderer, extensions: [emoji] })
   marked.Renderer.prototype.paragraph = (text) => {
-    console.log(text)
     if (text.startsWith('&lt;c:')) return text + '\n' // for weibu component
     return '<p>' + text + '</p>'
   }
+
   this.instance = marked
 }
 
