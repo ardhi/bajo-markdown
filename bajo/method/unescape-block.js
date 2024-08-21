@@ -1,15 +1,10 @@
 function unescapeBlock (content, start, end) {
-  const { unescape } = this.app.bajo
-  const idx1 = content.indexOf(start)
-  if (idx1 === -1) return content
-  let idx2 = content.indexOf(end)
-  if (idx2 === -1) return content
-  if (idx2 < idx1) {
-    const tmp = content.slice(idx1)
-    idx2 = tmp.indexOf(end) + idx1
-  }
-  const text = content.slice(idx1, idx2 + end.length)
-  const result = content.replaceAll(text, unescape(text))
+  const { unescape, sliceString } = this.app.bajo
+  const sliced = sliceString(content, start, end)
+  if (!sliced) return content
+  const unescaped = unescape(sliced)
+  const replacer = unescaped.slice(1, unescaped.length - 1)
+  const result = content.replaceAll(sliced, replacer)
   return unescapeBlock.call(this, result, start, end)
 }
 

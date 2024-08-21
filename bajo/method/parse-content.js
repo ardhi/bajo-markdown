@@ -1,7 +1,8 @@
-function parseContent (input, opts) {
-  let html = this.instance.parse(input, opts)
-  html = this.unescapeBlock(html, '&lt;c:', '&gt;') // component
-  html = this.unescapeBlock(html, '&lt;%', '%&gt;') // lodash template
+function parseContent (input, options = {}) {
+  let html = this.instance.parse(input)
+  html = this.unescapeBlock(html, '&lt;&lt;c:', '&gt;&gt;')
+  html = this.unescapeBlock(html, '&lt;&lt;/c:', '&gt;&gt;')
+  html = this.unescapeBlock(html, '&lt;&lt;%', '%&gt;&gt;') // lodash template
   return html
 }
 
