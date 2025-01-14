@@ -1,5 +1,4 @@
 {
-  "alias": "md",
   "renderer": {
     "tableClass": "table my-3",
     "tableHeadClass": "",
