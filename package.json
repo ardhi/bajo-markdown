@@ -1,6 +1,6 @@
 {
   "name": "bajo-markdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Markdown support for Bajo Framework",
   "main": "index.js",
   "scripts": {
