@@ -17,6 +17,7 @@ async function start () {
   if (this.app.waibuExtra) {
     const hljs = await importPkg('waibuExtra:highlight.js')
     const highlight = markedHighlight({
+      emptyLangClass: 'hljs',
       langPrefix: 'hljs language-',
       highlight (code, lang) {
         const language = hljs.getLanguage(lang) ? lang : 'plaintext'
@@ -27,13 +28,6 @@ async function start () {
   }
   const marked = new Marked(options)
   marked.use({ renderer, extensions: [emoji] })
-  /*
-  marked.Renderer.prototype.paragraph = (text) => {
-    if (text.startsWith('&lt;c:')) return text + '\n' // for weibu component
-    return '<p>' + text + '</p>'
-  }
-  */
-
   this.instance = marked
 }
 
