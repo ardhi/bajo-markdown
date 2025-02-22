@@ -1,4 +1,5 @@
-function parseContent (input, options = {}) {
+function parseContent (input, options) {
+  options = options ?? this.config.markdown
   let html = this.instance.parse(input)
   html = this.unescapeBlock(html, '&lt;&lt;c:', '&gt;&gt;')
   html = this.unescapeBlock(html, '&lt;&lt;/c:', '&gt;&gt;')
