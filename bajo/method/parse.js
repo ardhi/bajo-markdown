@@ -1,15 +1,8 @@
-function parse (input, opts = {}) {
-  const { omit, pick } = this.app.bajo.lib._
-  opts.parseContent = opts.parseContent ?? true
-
-  let { frontMatter, content } = this.split(input, pick(opts, ['readFile']))
-  frontMatter = this.parseFrontMatter(frontMatter)
-  const html = opts.parseContent ? this.parseContent(content, omit(opts, ['parseContent', 'readFile'])) : undefined
-  return {
-    frontMatter,
-    html,
-    content
-  }
+function parse (input, options) {
+  options = options ?? this.config.markdown
+  const html = this.instance.parse(input)
+  // html = this.app.waibu.unescapeBlock(html, '&lt;%', '%&gt;', '<%', '%>') // lodash template
+  return html
 }
 
 export default parse
