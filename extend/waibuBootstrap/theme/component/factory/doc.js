@@ -4,7 +4,6 @@ async function doc () {
       const { parse } = this.plugin.app.bajoMarkdown
       const input = this.params.html
       this.params.html = parse(input)
-      console.log(input, this.params.html)
     }
   }
 }
