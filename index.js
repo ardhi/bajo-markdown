@@ -9,7 +9,7 @@ import Renderer from './lib/renderer.js'
 async function factory (pkgName) {
   const me = this
 
-  return class BajoMarkdown extends this.lib.BajoPlugin {
+  return class BajoMarkdown extends this.lib.Plugin {
     constructor () {
       super(pkgName, me.app)
       this.alias = 'md'
