@@ -9,11 +9,12 @@ import Renderer from './lib/renderer.js'
 async function factory (pkgName) {
   const me = this
 
-  return class BajoMarkdown extends this.lib.Plugin {
+  class BajoMarkdown extends this.lib.Plugin {
+    static alias = 'md'
+    static dependencies = ['bajo-config']
+
     constructor () {
       super(pkgName, me.app)
-      this.alias = 'md'
-      this.dependencies = ['bajo-config']
       this.config = {
         renderer: {
           tableClass: 'table my-3',
@@ -55,6 +56,8 @@ async function factory (pkgName) {
       return html
     }
   }
+
+  return BajoMarkdown
 }
 
 export default factory
