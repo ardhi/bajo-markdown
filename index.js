@@ -9,7 +9,7 @@ import Renderer from './lib/renderer.js'
 async function factory (pkgName) {
   const me = this
 
-  class BajoMarkdown extends this.lib.Plugin {
+  class BajoMarkdown extends this.app.pluginClass.base {
     static alias = 'md'
     static dependencies = ['bajo-config']
 
