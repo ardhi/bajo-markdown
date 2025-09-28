@@ -3,12 +3,23 @@ import { markedHighlight } from 'marked-highlight'
 import customHeadingId from 'marked-custom-heading-id'
 import { mangle } from 'marked-mangle'
 import katex from 'marked-katex-extension'
-import { emoji } from './lib/emoji.js'
+import emoji from './lib/emoji.js'
 import Renderer from './lib/renderer.js'
 
+/**
+ * Plugin factory
+ *
+ * @param {string} pkgName - NPM package name
+ * @returns {class}
+ */
 async function factory (pkgName) {
   const me = this
 
+  /**
+   * BajoMarkdown class
+   *
+   * @class
+   */
   class BajoMarkdown extends this.app.pluginClass.base {
     static alias = 'md'
     static dependencies = ['bajo-config']
