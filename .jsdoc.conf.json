@@ -14,14 +14,14 @@
       "homepageTitle": "BajoMarkdown API",
       "sections": ["Classes", "Events", "Modules", "Global"],
       "menu": [{
-        "title": "Bajo",
-        "link": "https://bajo.app"
-      }, {
         "title": "NPM",
         "link": "https://www.npmjs.com/package/dobo"
       }, {
         "title": "Github",
         "link": "https://github.com/ardhi/dobo"
+      }, {
+        "title": "Bajo",
+        "link": "https://bajo.app"
       }]
     }
   },
