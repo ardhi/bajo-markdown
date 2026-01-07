@@ -20,7 +20,7 @@ async function factory (pkgName) {
    *
    * @class
    */
-  class BajoMarkdown extends this.app.pluginClass.base {
+  class BajoMarkdown extends this.app.baseClass.Base {
     static alias = 'md'
     static dependencies = ['bajo-config']
 

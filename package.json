@@ -1,6 +1,6 @@
 {
   "name": "bajo-markdown",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "description": "Markdown support for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -30,12 +30,12 @@
   "homepage": "https://github.com/ardhi/bajo-markdown#readme",
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "marked": "^15.0.6",
+    "marked": "^15.0.12",
     "marked-custom-heading-id": "^2.0.11",
-    "marked-extended-tables": "^1.1.0",
-    "marked-highlight": "^2.2.1",
-    "marked-katex-extension": "^5.1.4",
-    "marked-mangle": "^1.1.10",
+    "marked-extended-tables": "^2.0.1",
+    "marked-highlight": "^2.2.3",
+    "marked-katex-extension": "^5.1.6",
+    "marked-mangle": "^1.1.12",
     "node-emoji": "^2.2.0"
   },
   "devDependencies": {
