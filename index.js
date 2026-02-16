@@ -2,6 +2,7 @@ import { Marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
 import customHeadingId from 'marked-custom-heading-id'
 import { mangle } from 'marked-mangle'
+import { markedSmartypantsLite } from 'marked-smartypants-lite'
 import katex from 'marked-katex-extension'
 import emoji from './lib/emoji.js'
 import Renderer from './lib/renderer.js'
@@ -54,13 +55,21 @@ async function factory (pkgName) {
       }
       const marked = new Marked(options)
       marked.use({ renderer, extensions: [emoji] })
+      marked.use(markedSmartypantsLite())
+
       this.instance = marked
     }
 
     parse = (input, options) => {
       options = options ?? this.config.markdown
-      const html = this.instance.parse(input)
+      const html = this.instance.parse(input, options)
       // html = this.app.waibu.unescapeBlock(html, '&lt;%', '%&gt;', '<%', '%>') // lodash template
+      return html
+    }
+
+    parseInline = (input, options) => {
+      options = options ?? this.config.markdown
+      const html = this.instance.parseInline(input, options)
       return html
     }
   }
