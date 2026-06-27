@@ -8,10 +8,12 @@ import emoji from './lib/emoji.js'
 import Renderer from './lib/renderer.js'
 
 /**
- * Plugin factory
+ * Plugin factory. A thin wrapper for the {@link https://marked.js.org/|marked} library.
+ *
+ * **Never** call this function directly!!! It's only-meant to be called by the {@link https://ardhi.github.io/bajo|Bajo framework} during plugin initialization.
  *
  * @param {string} pkgName - NPM package name
- * @returns {class}
+ * @returns {class} BajoMarkdown
  */
 async function factory (pkgName) {
   const me = this
@@ -22,8 +24,16 @@ async function factory (pkgName) {
    * @class
    */
   class BajoMarkdown extends this.app.baseClass.Base {
+    /**
+     * Constructor
+     */
     constructor () {
       super(pkgName, me.app)
+
+      /**
+       * @property {object} config - Configuration object
+       * @property {object} [config.renderer={}] - Default renderer
+       */
       this.config = {
         renderer: {
           tableClass: 'table my-3',
@@ -31,8 +41,19 @@ async function factory (pkgName) {
           tableBodyClass: 'table-group-divider'
         }
       }
+
+      /**
+       * @property {Marked} instance - Marked instance
+       */
+      this.instance = null
     }
 
+    /**
+     * Start the plugin
+     *
+     * @async
+     * @method
+     */
     start = async () => {
       const { importPkg } = this.app.bajo
       const renderer = await Renderer.call(this)
@@ -60,6 +81,15 @@ async function factory (pkgName) {
       this.instance = marked
     }
 
+    /**
+     * Parse markdown text
+     *
+     * @async
+     * @method
+     * @param {string} input - Markdown text to be parsed
+     * @param {object} [options] - Options object
+     * @returns {string} HTML output
+     */
     parse = (input, options) => {
       options = options ?? this.config.markdown
       const html = this.instance.parse(input, options)
@@ -67,6 +97,15 @@ async function factory (pkgName) {
       return html
     }
 
+    /**
+     * Parse inline markdown text
+     *
+     * @async
+     * @method
+     * @param {string} input - Markdown text to be parsed
+     * @param {object} [options] - Options object
+     * @returns {string} HTML output
+     */
     parseInline = (input, options) => {
       options = options ?? this.config.markdown
       const html = this.instance.parseInline(input, options)

@@ -1,5 +1,5 @@
 async function doc () {
-  return class WmapsScript extends this.baseFactory {
+  return class MdDoc extends this.baseFactory {
     build = async () => {
       const { parse } = this.app.bajoMarkdown
       const input = this.params.html
