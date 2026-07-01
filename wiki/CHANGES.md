@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-07-01
+
+- [2.5.0] Remove ```bajo-config``` dependency
+
 ## 2026-06-27
 
 - [2.4.0] Add documentations
